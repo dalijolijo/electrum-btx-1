@@ -5,10 +5,10 @@ from PyInstaller.utils.hooks import collect_data_files, collect_submodules, coll
 import sys
 import os
 
-PACKAGE='electrum-btx'
-PYPKG='electrum-btx'
-MAIN_SCRIPT='run_electrum-btx'
-ICONS_FILE='icons/electrumBTX.icns'
+PACKAGE='electrum-bsd'
+PYPKG='electrum-bsd'
+MAIN_SCRIPT='run_electrum-bsd'
+ICONS_FILE='icons/electrumBSD.icns'
 
 for i, x in enumerate(sys.argv):
     if x == '--name':

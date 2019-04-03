@@ -45,13 +45,13 @@ def inv_dict(d):
     return {v: k for k, v in d.items()}
 
 
-base_units = {'BTX':8, 'mBTX':5, 'bits':2, 'sat':0}
+base_units = {'BSD':8, 'mBSD':5, 'bits':2, 'sat':0}
 base_units_inverse = inv_dict(base_units)
-base_units_list = ['BTX', 'mBTX', 'bits', 'sat']  # list(dict) does not guarantee order
+base_units_list = ['BSD', 'mBSD', 'bits', 'sat']  # list(dict) does not guarantee order
 
 
 def decimal_point_to_base_unit_name(dp: int) -> str:
-    # e.g. 8 -> "BTX"
+    # e.g. 8 -> "BSD"
     try:
         return base_units_inverse[dp]
     except KeyError:
@@ -59,7 +59,7 @@ def decimal_point_to_base_unit_name(dp: int) -> str:
 
 
 def base_unit_name_to_decimal_point(unit_name: str) -> int:
-    # e.g. "BTX" -> 8
+    # e.g. "BSD" -> 8
     try:
         return base_units[unit_name]
     except KeyError:
@@ -132,7 +132,7 @@ class Satoshis(object):
         return 'Satoshis(%d)'%self.value
 
     def __str__(self):
-        return format_satoshis(self.value) + " BTX"
+        return format_satoshis(self.value) + " BSD"
 
 class Fiat(object):
     __slots__ = ('value', 'ccy')
@@ -347,7 +347,7 @@ def android_data_dir():
     return PythonActivity.mActivity.getFilesDir().getPath() + '/data'
 
 def android_headers_dir():
-    d = android_ext_dir() + '/org.electrum-btx.electrum-btx'
+    d = android_ext_dir() + '/org.electrum-bsd.electrum-bsd'
     if not os.path.exists(d):
         try:
             os.mkdir(d)
@@ -359,7 +359,7 @@ def android_check_data_dir():
     """ if needed, move old directory to sandbox """
     ext_dir = android_ext_dir()
     data_dir = android_data_dir()
-    old_electrum_dir = ext_dir + '/electrum-btx'
+    old_electrum_dir = ext_dir + '/electrum-bsd'
     if not os.path.exists(data_dir) and os.path.exists(old_electrum_dir):
         import shutil
         new_headers_path = android_headers_dir() + '/blockchain_headers'
@@ -461,11 +461,11 @@ def user_dir():
     if 'ANDROID_DATA' in os.environ:
         return android_check_data_dir()
     elif os.name == 'posix':
-        return os.path.join(os.environ["HOME"], ".electrum-btx")
+        return os.path.join(os.environ["HOME"], ".electrum-bsd")
     elif "APPDATA" in os.environ:
-        return os.path.join(os.environ["APPDATA"], "Electrum-BTX")
+        return os.path.join(os.environ["APPDATA"], "Electrum-BSD")
     elif "LOCALAPPDATA" in os.environ:
-        return os.path.join(os.environ["LOCALAPPDATA"], "Electrum-BTX")
+        return os.path.join(os.environ["LOCALAPPDATA"], "Electrum-BSD")
     else:
         #raise Exception("No home directory found in environment variables.")
         return
@@ -584,11 +584,11 @@ def time_difference(distance_in_time, include_seconds):
         return "over %d years" % (round(distance_in_minutes / 525600))
 
 mainnet_block_explorers = {
-    'bitcore.cc': ('https://insight.bitcore.cc/',
+    'bitsend.cc': ('https://insight.bitsend.cc/',
                         {'tx': 'tx/', 'addr': 'address/'}),
     'cryptoID': ('https://chainz.cryptoid.info/',
-                        {'tx': 'btx/tx.dws?', 'addr': 'address.dws?'}),
-    'system default': ('https://insight.bitcore.cc/',
+                        {'tx': 'bsd/tx.dws?', 'addr': 'address.dws?'}),
+    'system default': ('https://insight.bitsend.cc/',
                         {'tx': 'tx/', 'addr': 'address/'}),
 }
 
@@ -629,12 +629,12 @@ def parse_URI(uri, on_pr=None):
 
     if ':' not in uri:
         if not bitcoin.is_address(uri):
-            raise Exception("Not a bitcore address")
+            raise Exception("Not a bitsend address")
         return {'address': uri}
 
     u = urllib.parse.urlparse(uri)
-    if u.scheme != 'bitcore':
-        raise Exception("Not a bitcore URI")
+    if u.scheme != 'bitsend':
+        raise Exception("Not a bitsend URI")
     address = u.path
 
     # python for android fails to parse query
@@ -651,7 +651,7 @@ def parse_URI(uri, on_pr=None):
     out = {k: v[0] for k, v in pq.items()}
     if address:
         if not bitcoin.is_address(address):
-            raise Exception("Invalid bitcore address:" + address)
+            raise Exception("Invalid bitsend address:" + address)
         out['address'] = address
     if 'amount' in out:
         am = out['amount']
@@ -701,7 +701,7 @@ def create_URI(addr, amount, message):
         query.append('amount=%s'%format_satoshis_plain(amount))
     if message:
         query.append('message=%s'%urllib.parse.quote(message))
-    p = urllib.parse.ParseResult(scheme='bitcore', netloc='', path=addr, params='', query='&'.join(query), fragment='')
+    p = urllib.parse.ParseResult(scheme='bitsend', netloc='', path=addr, params='', query='&'.join(query), fragment='')
     return urllib.parse.urlunparse(p)
 
 

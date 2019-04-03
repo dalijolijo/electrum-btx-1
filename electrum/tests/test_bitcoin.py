@@ -608,7 +608,7 @@ class Test_keyImport(SequentialTestCase):
            {'priv': 'LHJnnvRzsdrTX2j5QeWVsaBkabK7gfMNqNNqxnbBVRaJYfk24iJz',
             'exported_privkey': 'p2wpkh-p2sh:Kz9XebiCXL2BZzhYJViiHDzn5iup1povWV8aqstzWU4sz1K5nVva',
             'pub': '0279ad237ca0d812fb503ab86f25e15ebd5fa5dd95c193639a8a738dcd1acbad81',
-            'address': '3GeVJB3oKr7psgKR6BTXSxKtWUkfsHHhk7',
+            'address': '3GeVJB3oKr7psgKR6BSDSxKtWUkfsHHhk7',
             'minikey': False,
             'txin_type': 'p2wpkh-p2sh',
             'compressed': True,

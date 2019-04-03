@@ -734,7 +734,7 @@ class AddressSynchronizer(PrintError):
 
     @with_local_height_cached
     def get_addr_balance(self, address):
-        """Return the balance of a bitcore address:
+        """Return the balance of a bitsend address:
         confirmed and matured, unconfirmed, unmatured
         """
         received, sent = self.get_addr_io(address)

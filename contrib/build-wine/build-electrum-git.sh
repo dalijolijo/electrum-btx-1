@@ -45,7 +45,7 @@ popd
 #rm -rf dist/
 
 # build standalone and portable versions
-wine "C:/python$PYTHON_VERSION/scripts/pyinstaller.exe" --noconfirm --ascii --clean --name electrum-btx-3.2.3 -w deterministic.spec
+wine "C:/python$PYTHON_VERSION/scripts/pyinstaller.exe" --noconfirm --ascii --clean --name electrum-bsd-3.2.3 -w deterministic.spec
 
 # build NSIS installer
 # $VERSION could be passed to the electrum.nsi script, but this would require some rewriting in the script itself.

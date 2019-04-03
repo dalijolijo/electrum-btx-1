@@ -80,7 +80,7 @@ class Processor(threading.Thread, PrintError):
                 p = [p]
                 continue
             for item in p:
-                if item.get_content_type() == "application/bitcore-paymentrequest":
+                if item.get_content_type() == "application/bitsend-paymentrequest":
                     pr_str = item.get_payload()
                     pr_str = base64.b64decode(pr_str)
                     self.on_receive(pr_str)
@@ -110,10 +110,10 @@ class Processor(threading.Thread, PrintError):
         msg['Subject'] = message
         msg['To'] = recipient
         msg['From'] = self.username
-        part = MIMEBase('application', "bitcore-paymentrequest")
+        part = MIMEBase('application', "bitsend-paymentrequest")
         part.set_payload(payment_request)
         encode_base64(part)
-        part.add_header('Content-Disposition', 'attachment; filename="payreq.btx"')
+        part.add_header('Content-Disposition', 'attachment; filename="payreq.bsd"')
         msg.attach(part)
         try:
             s = smtplib.SMTP_SSL(self.imap_server, timeout=2)

@@ -138,7 +138,7 @@ class ElectrumWindow(App):
         self.send_screen.set_URI(uri)
 
     def on_new_intent(self, intent):
-        if intent.getScheme() != 'bitcore':
+        if intent.getScheme() != 'bitsend':
             return
         uri = intent.getDataString()
         self.set_URI(uri)
@@ -318,7 +318,7 @@ class ElectrumWindow(App):
         if is_address(data):
             self.set_URI(data)
             return
-        if data.startswith('bitcore:'):
+        if data.startswith('bitsend:'):
             self.set_URI(data)
             return
         # try to decode transaction
@@ -473,7 +473,7 @@ class ElectrumWindow(App):
         self.fiat_unit = self.fx.ccy if self.fx.is_enabled() else ''
         # default tab
         self.switch_to('history')
-        # bind intent for bitcore: URI scheme
+        # bind intent for bitsend: URI scheme
         if platform == 'android':
             from android import activity
             from jnius import autoclass

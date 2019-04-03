@@ -1,0 +1,21 @@
+# If you want Electrum to appear in a Linux app launcher ("start menu"), install this by doing:
+# sudo desktop-file-install electrum-bsd.desktop
+
+[Desktop Entry]
+Comment=Lightweight Bitsend Client
+Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\" electrum %u"
+GenericName[en_US]=Bitsend Wallet
+GenericName=Bitsend Wallet
+Icon=electrumBSD
+Name[en_US]=Electrum Bitsend Wallet
+Name=Electrum Bitsend Wallet
+Categories=Finance;Network;
+StartupNotify=false
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/bitsend;
+Actions=Testnet;
+
+[Desktop Action Testnet]
+Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\" electrum-bsd --testnet %u"
+Name=Testnet mode

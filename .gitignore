@@ -5,7 +5,7 @@ build/
 dist/
 *.egg/
 contrib/pyinstaller/
-Electrum_BTX.egg-info/
+Electrum_BSD.egg-info/
 contrib/build-wine/LICENSE
 #electrum/gui/qt/icons_rc.py
 #locale/

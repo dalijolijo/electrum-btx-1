@@ -1,23 +1,23 @@
 {
-    "ele1.bitcore.cc": {
+    "ele1.bitsend.cc": {
         "pruning": "-",
         "s": "50002",
         "t": "50001",
         "version": "1.1"
     },
-    "ele2.bitcore.cc": {
+    "ele2.bitsend.cc": {
         "pruning": "-",
         "s": "50002",
         "t": "50001",
         "version": "1.1"
     },
-    "ele3.bitcore.cc": {
+    "ele3.bitsend.cc": {
         "pruning": "-",
         "s": "50002",
         "t": "50001",
         "version": "1.1"
     },
-    "ele4.bitcore.cc": {
+    "ele4.bitsend.cc": {
         "pruning": "-",
         "s": "50002",
         "t": "50001",

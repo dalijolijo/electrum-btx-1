@@ -1,4 +1,4 @@
-Electrum-BTX - Lightweight Bitcore client
+Electrum-BSD - Lightweight Bitsend client
 =========================================
 
 ::
@@ -6,7 +6,7 @@ Electrum-BTX - Lightweight Bitcore client
   Licence: MIT Licence
   Authors: Thomas Voegtlin, LIMXTEC developers
   Language: Python
-  Homepage: https://github.com/LIMXTEC/electrum-btx/releases 
+  Homepage: https://github.com/LIMXTEC/electrum-bsd/releases 
 
 
 
@@ -14,30 +14,30 @@ Electrum-BTX - Lightweight Bitcore client
 Getting started
 ===============
 
-Electrum-BTX is a pure python application. If you want to use the
+Electrum-BSD is a pure python application. If you want to use the
 Qt interface, install the Qt dependencies::
 
     sudo apt-get install python3-pyqt5
 
 If you downloaded the official package (tar.gz), you can run
-Electrum-BTX from its root directory, without installing it on your
+Electrum-BSD from its root directory, without installing it on your
 system; all the python dependencies are included in the 'packages'
 directory. To run Electrum from its root directory, just do::
 
-    ./run_electrum-btx
+    ./run_electrum-bsd
 
-You can also install Electrum-BTX on your system, by running this command::
+You can also install Electrum-BSD on your system, by running this command::
 
     sudo apt-get install python3-setuptools
     pip3 install .[fast]
 
 This will download and install the Python dependencies used by
-Electrum-BTX, instead of using the 'packages' directory.
+Electrum-BSD, instead of using the 'packages' directory.
 The 'fast' extra contains some optional dependencies that we think
 are often useful but they are not strictly needed.
 
 If you cloned the git repository, you need to compile extra files
-before you can run Electrum-BTX. Read the next section, "Development
+before you can run Electrum-BSD. Read the next section, "Development
 Version".
 
 
@@ -47,8 +47,8 @@ Development version
 
 Check out the code from GitHub::
 
-    git clone git://github.com/LIMXTEC/electrum-btx.git
-    cd electrum-btx
+    git clone git://github.com/LIMXTEC/electrum-bsd.git
+    cd electrum-bsd
 
 Run install (this should install dependencies)::
 
@@ -84,7 +84,7 @@ To create binaries, create the 'packages' directory::
 
     ./contrib/make_packages
 
-This directory contains the python dependencies used by Electrum-BTX.
+This directory contains the python dependencies used by Electrum-BSD.
 
 Mac OS X / macOS
 --------
@@ -101,7 +101,7 @@ Linux
 
 Clone the electrum-git repo and change VERSION with the right one:
 
-    tar --exclude=./electrum-btx/.* --exclude=./electrum-btx/contrib -cvz -f electrum-btx_linux_VERSION-btx.tar.gz ./electrum-btx
+    tar --exclude=./electrum-bsd/.* --exclude=./electrum-bsd/contrib -cvz -f electrum-bsd_linux_VERSION-bsd.tar.gz ./electrum-bsd
 
 
 Android

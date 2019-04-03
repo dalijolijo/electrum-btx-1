@@ -39,8 +39,8 @@ if platform.system() in ['Linux', 'FreeBSD', 'DragonFly']:
         else:
             usr_share = os.path.expanduser('~/.local/share')
     data_files += [
-        (os.path.join(usr_share, 'applications/'), ['electrum-btx.desktop']),
-        (os.path.join(usr_share, icons_dirname), ['icons/electrumBTX.png'])
+        (os.path.join(usr_share, 'applications/'), ['electrum-bsd.desktop']),
+        (os.path.join(usr_share, icons_dirname), ['icons/electrumBSD.png'])
     ]
 
 extras_require = {
@@ -69,7 +69,7 @@ class CustomInstallCommand(install):
 
 
 setup(
-    name="Electrum-BTX",
+    name="Electrum-BSD",
     version=version.ELECTRUM_VERSION,
     install_requires=requirements,
     extras_require=extras_require,
@@ -89,14 +89,14 @@ setup(
             'locale/*/LC_MESSAGES/electrum.mo',
         ],
     },
-    scripts=['electrum/electrum-btx'],
+    scripts=['electrum/electrum-bsd'],
     data_files=data_files,
-    description="Lightweight Bitcore Wallet",
+    description="Lightweight Bitsend Wallet",
     author="Thomas Voegtlin",
     author_email="thomasv@electrum.org",
     license="MIT Licence",
     url="https://bitcore.cc",
-    long_description="""Lightweight Bitcore Wallet""",
+    long_description="""Lightweight Bitsend Wallet""",
     cmdclass={
         'install': CustomInstallCommand,
     },

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Electrum - lightweight Bitcore client
+# Electrum - lightweight Bitsend client
 # Copyright (C) 2011 thomasv@gitorious
 #
 # Permission is hereby granted, free of charge, to any person
@@ -130,8 +130,8 @@ class Commands:
     @command('wn')
     def restore(self, text):
         """Restore a wallet from text. Text can be a seed phrase, a master
-        public key, a master private key, a list of bitcore addresses
-        or bitcore private keys. If you want to be prompted for your
+        public key, a master private key, a list of bitsend addresses
+        or bitsend private keys. If you want to be prompted for your
         seed, type '?' or ':' (concealed) """
         raise Exception('Not a JSON-RPC command')
 
@@ -463,7 +463,7 @@ class Commands:
 
     @command('w')
     def setlabel(self, key, label):
-        """Assign a label to an item. Item may be a bitcore address or a
+        """Assign a label to an item. Item may be a bitsend address or a
         transaction ID"""
         self.wallet.set_label(key, label)
 
@@ -543,7 +543,7 @@ class Commands:
             PR_PAID: 'Paid',
             PR_EXPIRED: 'Expired',
         }
-        out['amount (BTX)'] = format_satoshis(out.get('amount'))
+        out['amount (BSD)'] = format_satoshis(out.get('amount'))
         out['status'] = pr_str[out.get('status', PR_UNKNOWN)]
         return out
 
@@ -682,8 +682,8 @@ class Commands:
 
 param_descriptions = {
     'privkey': 'Private key. Type \'?\' to get a prompt.',
-    'destination': 'Bitcore address, contact or alias',
-    'address': 'Bitcore address',
+    'destination': 'Bitsend address, contact or alias',
+    'address': 'Bitsend address',
     'seed': 'Seed phrase',
     'txid': 'Transaction ID',
     'pos': 'Position',
@@ -693,8 +693,8 @@ param_descriptions = {
     'pubkey': 'Public key',
     'message': 'Clear text message. Use quotes if it contains spaces.',
     'encrypted': 'Encrypted message',
-    'amount': 'Amount to be sent (in BTX). Type \'!\' to send the maximum available.',
-    'requested_amount': 'Requested amount (in BTX).',
+    'amount': 'Amount to be sent (in BSD). Type \'!\' to send the maximum available.',
+    'requested_amount': 'Requested amount (in BSD).',
     'outputs': 'list of ["address", amount]',
     'redeem_script': 'redeem script (hexadecimal)',
 }
@@ -711,7 +711,7 @@ command_options = {
     'labels':      ("-l", "Show the labels of listed addresses"),
     'nocheck':     (None, "Do not verify aliases"),
     'imax':        (None, "Maximum number of inputs"),
-    'fee':         ("-f", "Transaction fee (in BTX)"),
+    'fee':         ("-f", "Transaction fee (in BSD)"),
     'from_addr':   ("-F", "Source address (must be a wallet address; use sweep to spend from non-wallet address)."),
     'change_addr': ("-c", "Change address. Default is a spare address, or the source address if it's not in the wallet"),
     'nbits':       (None, "Number of bits of entropy"),
@@ -763,10 +763,10 @@ config_variables = {
         'requests_dir': 'directory where a bip70 file will be written.',
         'ssl_privkey': 'Path to your SSL private key, needed to sign the request.',
         'ssl_chain': 'Chain of SSL certificates, needed for signed requests. Put your certificate at the top and the root CA at the end',
-        'url_rewrite': 'Parameters passed to str.replace(), in order to create the r= part of bitcore: URIs. Example: \"(\'file:///var/www/\',\'https://electrum.org/\')\"',
+        'url_rewrite': 'Parameters passed to str.replace(), in order to create the r= part of bitsend: URIs. Example: \"(\'file:///var/www/\',\'https://electrum.org/\')\"',
     },
     'listrequests':{
-        'url_rewrite': 'Parameters passed to str.replace(), in order to create the r= part of bitcore: URIs. Example: \"(\'file:///var/www/\',\'https://electrum.org/\')\"',
+        'url_rewrite': 'Parameters passed to str.replace(), in order to create the r= part of bitsend: URIs. Example: \"(\'file:///var/www/\',\'https://electrum.org/\')\"',
     }
 }
 
@@ -834,7 +834,7 @@ def add_global_options(parser):
     # default is for when the flag is missing
     group.add_argument("-v", dest="verbosity", help="Set verbosity filter", default='', const='*', nargs='?')
     group.add_argument("-D", "--dir", dest="electrum_path", help="electrum directory")
-    group.add_argument("-P", "--portable", action="store_true", dest="portable", default=False, help="Use local 'electrum-btx_data' directory")
+    group.add_argument("-P", "--portable", action="store_true", dest="portable", default=False, help="Use local 'electrum-bsd_data' directory")
     group.add_argument("-w", "--wallet", dest="wallet_path", help="wallet path")
     group.add_argument("--testnet", action="store_true", dest="testnet", default=False, help="Use Testnet")
     group.add_argument("--regtest", action="store_true", dest="regtest", default=False, help="Use Regtest")
@@ -848,7 +848,7 @@ def get_parser():
     subparsers = parser.add_subparsers(dest='cmd', metavar='<command>')
     # gui
     parser_gui = subparsers.add_parser('gui', description="Run Electrum's Graphical User Interface.", help="Run GUI (default)")
-    parser_gui.add_argument("url", nargs='?', default=None, help="bitcore URI (or bip70 file)")
+    parser_gui.add_argument("url", nargs='?', default=None, help="bitsend URI (or bip70 file)")
     parser_gui.add_argument("-g", "--gui", dest="gui", help="select graphical user interface", choices=['qt', 'kivy', 'text', 'stdio'])
     parser_gui.add_argument("-o", "--offline", action="store_true", dest="offline", default=False, help="Run offline")
     parser_gui.add_argument("-m", action="store_true", dest="hide_gui", default=False, help="hide GUI on startup")

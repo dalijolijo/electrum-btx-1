@@ -7,10 +7,10 @@
 ;Variables
 ;--------------------------------
 
-  !define PRODUCT_NAME "electrum-btx"
+  !define PRODUCT_NAME "electrum-bsd"
   !define PRODUCT_VERSION "3.2.3"
-  !define PRODUCT_WEB_SITE "https://github.com/LIMXTEC/electrum-btx"
-  !define PRODUCT_PUBLISHER "bitcore.cc"
+  !define PRODUCT_WEB_SITE "https://github.com/LIMXTEC/electrum-bsd"
+  !define PRODUCT_PUBLISHER "bitsend.cc"
   !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 
 ;--------------------------------
@@ -129,7 +129,7 @@ Section
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME} Testnet.lnk" "$INSTDIR\${PRODUCT_NAME}-${PRODUCT_VERSION}.exe" "--testnet" "$INSTDIR\${PRODUCT_NAME}-${PRODUCT_VERSION}.exe" 0
 
   ;Links bitcoin: URI's to Electrum
-  WriteRegStr HKCU "Software\Classes\${PRODUCT_NAME}-${PRODUCT_VERSION}" "" "URL:bitcore Protocol"
+  WriteRegStr HKCU "Software\Classes\${PRODUCT_NAME}-${PRODUCT_VERSION}" "" "URL:bitsend Protocol"
   WriteRegStr HKCU "Software\Classes\${PRODUCT_NAME}-${PRODUCT_VERSION}" "URL Protocol" ""
   WriteRegStr HKCU "Software\Classes\${PRODUCT_NAME}-${PRODUCT_VERSION}" "DefaultIcon" "$\"$INSTDIR\electrum.ico, 0$\""
   WriteRegStr HKCU "Software\Classes\${PRODUCT_NAME}-${PRODUCT_VERSION}\shell\open\command" "" "$\"$INSTDIR\${PRODUCT_NAME}-${PRODUCT_VERSION}.exe$\" $\"%1$\""

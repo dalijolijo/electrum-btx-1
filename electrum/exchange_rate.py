@@ -350,7 +350,7 @@ class WEX(ExchangeBase):
 
 class CoinMarketCap(ExchangeBase):
     def get_rates(self, ccy):
-        json = self.get_json("api.coinmarketcap.com", "/v1/ticker/bitcore/?convert=" + ccy)
+        json = self.get_json("api.coinmarketcap.com", "/v1/ticker/bitsend/?convert=" + ccy)
         return {ccy: Decimal(json[0]["price_" + ccy.lower()])}
 
 
